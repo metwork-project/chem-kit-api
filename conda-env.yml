@@ -1,0 +1,6 @@
+name: chem_kit_api
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - rdkit=2020.09.1
