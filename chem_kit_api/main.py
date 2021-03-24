@@ -1,8 +1,10 @@
 from typing import List
 from pathlib import Path
+from pydantic import BaseModel
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from chem_kit.transformation import Transformation
+from chem_kit.transformation.simplifier import SimplifierParams
 from . import __version__ as api_version
 
 
@@ -32,11 +34,12 @@ app.add_middleware(
 
 @app.post("/transformations_from_smiles")
 async def transformations_from_smiles(
-    smiles: List[str] = Body(..., example=["CCO", "CCOC"])
+    smiles: List[str] = Body(..., example=["CCO", "CCOC"]),
+    params: SimplifierParams = Body(BaseModel(), example=SimplifierParams()),
 ):
     result = []
     transformation = Transformation.from_smiles(*smiles)
-    simplified = transformation.simplify()  # **params)
+    simplified = transformation.simplify(**params.dict())
     for idx, tsf in enumerate(simplified):
         data = {"id": idx, "smarts": tsf.smarts, "chemDoodleJson": tsf.chemdoodle_json}
         result.append(data)
