@@ -1,0 +1,1 @@
+uvicorn chem_kit_api.main:app --reload

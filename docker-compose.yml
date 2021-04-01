@@ -1,27 +1,15 @@
 version: '3.5'
 
-# Not compatible with some docker-compose version used
-# x-data-volume: &data_volume
-#   ${SONETAA_DATA}:/srv/sonetaa
-
-
 services:
 
     chem_kit_api:
         build:
           context: ./
           dockerfile: ./Dockerfile
-        image: yannbeauxis/chem_kit_api:0.1.0
+        image: yannbeauxis/chem-kit-api:0.1.1
         container_name: "chem_kit_api"
         environment:
             - PORT=8000
-        #   - FLASK_ENV=production
-        #   - SONETAA_DATA=/srv/sonetaa
-        #   - SONETAA_CONF=/etc/sonetaa/workspace.toml
-        # volumes:
-        #   - ${SONETAA_DATA}:/srv/sonetaa
-        #   - ./backend/workspace.toml:/etc/sonetaa/workspace.toml
-        #   - ./backend/uwsgi.ini:/etc/uwsgi/uwsgi.ini
         working_dir: /opt/chem_kit_api
         stdin_open: true
         tty: true

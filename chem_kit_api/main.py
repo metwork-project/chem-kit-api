@@ -5,22 +5,23 @@ from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from chem_kit.transformation import Transformation
 from chem_kit.transformation.simplifier import SimplifierParams
-from . import __version__ as api_version
+# from chem_kit_api import __version__ as api_version
 
 
-api_description = (Path().parent / "README.md").read_text()
-api_description = "\n".join(api_description.split("\n")[2:])
+# api_description = (Path().parent / "README.md").read_text()
+# api_description = "\n".join(api_description.split("\n")[2:])
 
 app = FastAPI(
     title="ChemKit API",
-    description=api_description,
-    version=api_version,
+    # description=api_description,
+    # version=api_version,
 )
 
 origins = [
     "http://127.0.0.1:8000",
     "http://localhost:8000",
     "http://localhost:3000",
+    "http://transformation.metwork.science"
 ]
 
 app.add_middleware(
