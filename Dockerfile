@@ -46,4 +46,4 @@ COPY ./chem_kit_api /opt/chem_kit_api
 WORKDIR /opt/chem_kit_api
 
 SHELL ["/bin/bash", "-c"]
-CMD source /venv/bin/activate && gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:$PORT main:app 
+CMD source /venv/bin/activate && gunicorn -w 4 -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8000 main:app 
