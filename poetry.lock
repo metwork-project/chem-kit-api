@@ -81,7 +81,7 @@ d = ["aiohttp (>=3.3.2)", "aiohttp-cors"]
 
 [[package]]
 name = "chem-kit"
-version = "0.1.1"
+version = "0.1.2"
 description = "A chemical toolbox based on RDKit"
 category = "main"
 optional = false
@@ -667,7 +667,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.1"
-content-hash = "c0c0f80769a7eb486872ff340300c9e051685ec73a9d91ccefe52c5845a489cf"
+content-hash = "fd94a8c755e602e05bb91a3bf1a049b2aed222d8d91167d978975ff4f2751a8f"
 
 [metadata.files]
 appdirs = [
@@ -698,8 +698,8 @@ black = [
     {file = "black-20.8b1.tar.gz", hash = "sha256:1c02557aa099101b9d21496f8a914e9ed2222ef70336404eeeac8edba836fbea"},
 ]
 chem-kit = [
-    {file = "chem-kit-0.1.1.tar.gz", hash = "sha256:9dc9ecb3a3fb0a43a7b74ca10bef5198e8841967d46a88219b281353537e8864"},
-    {file = "chem_kit-0.1.1-py3-none-any.whl", hash = "sha256:20b7ffc226ee4007bacc35731f4ceae9a105e037e916f583222841537f5ede05"},
+    {file = "chem-kit-0.1.2.tar.gz", hash = "sha256:263333436a4a9e3f667d8d4504d6576d4f5836b28cd26fb2f4e0d4fac8223011"},
+    {file = "chem_kit-0.1.2-py3-none-any.whl", hash = "sha256:423556e721a69c4e6ec8b922d6e72381e33ab468d9bc424ea208bfca22aa98db"},
 ]
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},

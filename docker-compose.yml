@@ -6,7 +6,7 @@ services:
         build:
           context: ./
           dockerfile: ./Dockerfile
-        image: yannbeauxis/chem-kit-api:0.1.1
+        image: yannbeauxis/chem-kit-api:0.1.2
         container_name: "chem_kit_api"
         environment:
             - PORT=8000
