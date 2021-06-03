@@ -1,4 +1,4 @@
-transformations_from_smiles_examples = [
+transformations_from_smiles = [
     {
         "smiles": ["CCO", "CCOC"],
         "result": [

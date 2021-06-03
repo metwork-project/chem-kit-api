@@ -48,3 +48,17 @@ async def transformations_from_smiles(
     # reverted_smarts = {tsf.reverse().smarts for tsf in simplified}
     # result = result.union(simplified_smarts, reverted_smarts)
     return result
+
+
+@app.post("/smiles_from_smarts")
+async def smiles_from_smarts(
+    smarts: str = Body(
+        ...,
+        embed=True,
+        example="[#8:1]-[#6:2]1:[#6:3]>>[#8:1]-[#6:2]1:[#6:3]",
+    ),
+):
+    transformation = Transformation(smarts)
+    smiles = [transformation.reactant.smiles, transformation.product.smiles]
+
+    return smiles
