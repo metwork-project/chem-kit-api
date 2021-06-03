@@ -1,10 +1,10 @@
 from typing import List
-from pathlib import Path
 from pydantic import BaseModel
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
 from chem_kit.transformation import Transformation
 from chem_kit.transformation.simplifier import SimplifierParams
+
 # from chem_kit_api import __version__ as api_version
 
 
@@ -21,7 +21,7 @@ origins = [
     "http://127.0.0.1:8000",
     "http://localhost:8000",
     "http://localhost:3000",
-    "http://transformation.metwork.science"
+    "http://transformation.metwork.science",
 ]
 
 app.add_middleware(
