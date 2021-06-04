@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 from pydantic import BaseModel
 from fastapi import FastAPI, Body
 from fastapi.middleware.cors import CORSMiddleware
@@ -36,18 +36,25 @@ app.add_middleware(
 @app.post("/transformations_from_smiles")
 async def transformations_from_smiles(
     smiles: List[str] = Body(..., example=["CCO", "CCOC"]),
+    reverse: bool = Body(False, example=["CCO", "CCOC"]),
     params: SimplifierParams = Body(BaseModel(), example=SimplifierParams()),
 ):
     result = []
     transformation = Transformation.from_smiles(*smiles)
     simplified = transformation.simplify(**params.dict())
-    for idx, tsf in enumerate(simplified):
-        data = {"id": idx, "smarts": tsf.smarts, "chemDoodleJson": tsf.chemdoodle_json}
-        result.append(data)
-    # simplified_smarts = {tsf.smarts for tsf in simplified}
-    # reverted_smarts = {tsf.reverse().smarts for tsf in simplified}
-    # result = result.union(simplified_smarts, reverted_smarts)
+    idx = 0
+    for tsf in simplified:
+        result.append(gen_tsf_data(idx, tsf))
+        idx += 1
+        if reverse:
+            tsf.reverse()
+            result.append(gen_tsf_data(idx, tsf))
+            idx += 1
     return result
+
+
+def gen_tsf_data(idx, tsf):
+    return {"id": idx, "smarts": tsf.smarts, "chemDoodleJson": tsf.chemdoodle_json}
 
 
 @app.post("/smiles_from_smarts")
